@@ -1,12 +1,13 @@
 import {useParams} from "react-router-dom";
 
 function Book() {
-    const params = useParams();
-    console.log('params: ', params)
+    // const params = useParams();
+    const {id} = useParams();
+    console.log('params: ', id)
     return (
         <>
             <h2>
-            Book
+            Book {id}
             </h2>
         </>
     );

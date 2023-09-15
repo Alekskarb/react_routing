@@ -2,7 +2,7 @@ function NewBook() {
     return (
         <>
             <h2>
-                NewBook
+                New Book
             </h2>
         </>
     );
