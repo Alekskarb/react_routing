@@ -1,5 +1,5 @@
 import './App.css';
-import {Link, Route, Routes} from "react-router-dom";
+import {Link, Route, Routes, useRoutes} from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import BookList from "./pages/BookList";
@@ -11,6 +11,25 @@ import BooksLayout from "./layout/BooksLayout";
 import {BookRoutes} from "./BookRoutes";
 
 function App() {
+
+    const elements = useRoutes([
+        {
+            path: '/', element: <Home/>
+        },
+        {
+            path: '/books', element: <BooksLayout/>,
+            children: [
+                {
+                    index: true,
+                    element: <BookList/>
+                },
+                {
+                    path: ':id', element: <Book/>
+                }
+            ]
+        }
+    ])
+
     return (
         <>
             <ul>
@@ -19,17 +38,17 @@ function App() {
                 <li><Link to='/books'>Book List</Link></li>
                 <li><Link to='/contact'>Contact</Link></li>
             </ul>
-            <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/about' element={<About/>}/>
-                <Route path='/books/*' element={<BookRoutes/>} />
-
-                {/*<Route path='/books' element={<BookList/>}>*/}
-                {/*<Route path='/books/:id/:img?' element={<Book/>}/>*/}
-                {/*<Route path='/books/new' element={<NewBook/>}/>*/}
-                <Route path='/contact' element={<Contact/>}/>
-                <Route path='*' element={<NotFound/>}/>
-            </Routes>
+            {elements}
+            {/*<Routes>*/}
+            {/*    <Route path='/' element={<Home/>}/>*/}
+            {/*    <Route path='/about' element={<About/>}/>*/}
+            {/*    <Route path='/books/*' element={<BookRoutes/>}/>*/}
+            {/*    /!*<Route path='/books' element={<BookList/>}>*!/*/}
+            {/*    /!*<Route path='/books/:id/:img?' element={<Book/>}/>*!/*/}
+            {/*    /!*<Route path='/books/new' element={<NewBook/>}/>*!/*/}
+            {/*    <Route path='/contact' element={<Contact/>}/>*/}
+            {/*    <Route path='*' element={<NotFound/>}/>*/}
+            {/*</Routes>*/}
         </>
     )
         ;
