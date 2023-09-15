@@ -8,7 +8,7 @@ function BooksLayout() {
                 <li><Link to='/books/2'>link 2</Link></li>
                 <li><Link to='/books/new'>New Book</Link></li>
             </ul>
-            <Outlet/>
+            <Outlet context={{name: 'Alex'}}/>
         </>
     );
 }
