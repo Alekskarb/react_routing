@@ -1,10 +1,9 @@
-import {Link, Outlet, useSearchParams} from "react-router-dom";
-import {useState} from "react";
+import {Link, Outlet,  useSearchParams} from "react-router-dom";
 
 function BooksLayout() {
     // const [number, setNumber] = useState(3);
     const [searchParams, setParams] = useSearchParams({num: 3});
-    console.log('params: ', searchParams.get('num'))
+    console.log('params: ', searchParams)
     const params = searchParams.get('num');
 
     return (

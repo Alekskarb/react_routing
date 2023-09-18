@@ -1,5 +1,5 @@
 import './App.css';
-import {Link, NavLink, Route, Routes, useRoutes} from "react-router-dom";
+import {Link, NavLink, Route, Routes, useLocation, useRoutes} from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import BookList from "./pages/BookList";
@@ -11,7 +11,8 @@ import BooksLayout from "./layout/BooksLayout";
 import {BookRoutes} from "./BookRoutes";
 
 function App() {
-
+    const location = useLocation();
+    console.log('location: ', location)
     // const elements = useRoutes([
     //     {
     //         path: '/', element: <Home/>
@@ -36,7 +37,7 @@ function App() {
                 <li><NavLink style={({isActive}) => {
                     return isActive ? {color: 'red'} : {}
                 }}
-                             to='/'>Home</NavLink></li>
+                  state='PasData'           to='/'>Home</NavLink></li>
                 <li><NavLink className={({isActive}) => isActive ? 'red' : null}
                 //     style={({isActive}) => {
                 //     return isActive ? {color: 'red'} : {}
@@ -48,6 +49,8 @@ function App() {
                 <li><NavLink to='/contact'>Contact</NavLink></li>
             </ul>
             {/*{elements}*/}
+            {location.state}
+
             <Routes>
                 <Route path='/' element={<Home/>}/>
                 <Route path='/about' element={<About/>}/>
